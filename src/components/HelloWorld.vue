@@ -23,8 +23,8 @@ const searchTerm = ref("");
   </div>
   <!-- <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
-  </div>
-  <div class="card"> -->
+  </div> -->
+  <div class="card">
     <p>
       <span class="output-label">search term:</span>
       <span class="output-result" v-if="searchTerm.length > 1">{{
