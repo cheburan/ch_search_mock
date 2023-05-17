@@ -7,9 +7,6 @@ dependencies:
   franc:
     specifier: ^6.1.0
     version: 6.1.0
-  franc-min:
-    specifier: ^6.1.0
-    version: 6.1.0
   ts-node:
     specifier: ^10.9.1
     version: 10.9.1(@types/node@20.1.5)(typescript@5.0.2)
@@ -573,12 +570,6 @@ packages:
 
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
-
-  /franc-min@6.1.0:
-    resolution: {integrity: sha512-ZGKRCVw//1KvlLjeRjNTYB27Py6bq1J+0smr3IalQ4l7ZYR9DeoeLxjGWQKQ0Hr8n2dIjkfOvCzr7nzejljeJg==}
-    dependencies:
-      trigram-utils: 2.0.1
-    dev: false
 
   /franc@6.1.0:
     resolution: {integrity: sha512-woYqLX7sFcrKD4y1M33IorhH4b21bCDNr0Rm+zlAGRNuxLFilT4h8qEcclu8RFLpHmvNz7FgAYl9Vqfa8UZwoA==}
