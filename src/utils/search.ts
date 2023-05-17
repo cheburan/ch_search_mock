@@ -4,6 +4,7 @@ import { levenshteinEditDistance } from "levenshtein-edit-distance";
 import { soundex } from "soundex-code";
 
 import { pinyin } from "pinyin-pro";
+import { franc } from 'franc';
 //const { pinyin } = pinyinPro;
 
 type IndexedVocabluary = {
@@ -16,6 +17,10 @@ type IndexedVocabluary = {
   translation: string;
   distance?: number;
 };
+
+export function langaugeDetection(str: string) {
+  return franc(str, { minLength: 1, only: ['cmn', 'eng', 'jpn', 'kor', 'may', 'vie', 'rus', 'zlm', 'npi', 'tam']});
+}
 
 export function getSimilarity(a: string, b: string) {
   return 1 - levenshteinEditDistance(a, b) / Math.max(a.length, b.length);

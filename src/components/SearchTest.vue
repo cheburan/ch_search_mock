@@ -6,6 +6,7 @@ import {
   getSimilarity,
   getSoundex,
   searchClosestLevinsteinDistance,
+  langaugeDetection,
   indexedVocabluaryResolved,
 } from "../utils/search.ts";
 
@@ -13,17 +14,29 @@ defineProps<{ msg: string }>();
 
 // const count = ref(0);
 const searchTerm = ref("");
+const detectedLanguage = ref("");
+
+const detectLanguage = () => {
+  console.log("searchTerm: ", searchTerm.value);
+  detectedLanguage.value = langaugeDetection(searchTerm.value,);
+  console.log("detected Language: ", detectedLanguage.value);
+};
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
 
   <div class="card">
-    <input v-model="searchTerm" placeholder="type text" />
+    <input
+      v-model="searchTerm"
+      placeholder="type text"
+      type="text"
+      @keyup="detectLanguage"
+    />
   </div>
-  <!-- <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-  </div> -->
+  <div class="card">
+    <h2 type="text"> Language: <span v-if="searchTerm.length > 0">{{ detectedLanguage }}</span></h2>
+  </div>
   <div class="card">
     <p>
       <span class="output-label">search term:</span>
@@ -65,14 +78,11 @@ const searchTerm = ref("");
 
   <div class="card">
     <h2 class="">Indexed Vocabluary Available:</h2>
-    <p
-      v-for="word in indexedVocabluaryResolved"
-      :key="word.metaphone"
-    >
-    <span>
-      <b>{{ word.original }}</b> - {{ word.pinyin }} - {{ word.metaphone }} -
-      {{ word.translation }}
-    </span>
+    <p v-for="word in indexedVocabluaryResolved" :key="word.metaphone">
+      <span>
+        <b>{{ word.original }}</b> - {{ word.pinyin }} - {{ word.metaphone }} -
+        {{ word.translation }}
+      </span>
     </p>
   </div>
 </template>
