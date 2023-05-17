@@ -6,8 +6,6 @@ import { soundex } from "soundex-code";
 import { pinyin } from "pinyin-pro";
 //const { pinyin } = pinyinPro;
 
-const FOOD = "火腿";
-
 type IndexedVocabluary = {
   original: string;
   originalPinYin: string;
