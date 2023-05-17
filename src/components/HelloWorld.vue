@@ -11,7 +11,7 @@ import {
 
 defineProps<{ msg: string }>();
 
-const count = ref(0);
+// const count = ref(0);
 const searchTerm = ref("");
 </script>
 
@@ -21,10 +21,10 @@ const searchTerm = ref("");
   <div class="card">
     <input v-model="searchTerm" placeholder="type text" />
   </div>
-  <div class="card">
+  <!-- <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
   </div>
-  <div class="card">
+  <div class="card"> -->
     <p>
       <span class="output-label">search term:</span>
       <span class="output-result" v-if="searchTerm.length > 1">{{
