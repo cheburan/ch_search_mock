@@ -18,7 +18,7 @@ const detectedLanguage = ref("");
 
 const detectLanguage = () => {
   console.log("searchTerm: ", searchTerm.value);
-  detectedLanguage.value = langaugeDetection(searchTerm.value,);
+  detectedLanguage.value = langaugeDetection(searchTerm.value);
   console.log("detected Language: ", detectedLanguage.value);
 };
 </script>
@@ -35,7 +35,9 @@ const detectLanguage = () => {
     />
   </div>
   <div class="card">
-    <h2 type="text"> Language: <span v-if="searchTerm.length > 0">{{ detectedLanguage }}</span></h2>
+    <h2 type="text">
+      Language: <span v-if="searchTerm.length > 0">{{ detectedLanguage }}</span>
+    </h2>
   </div>
   <div class="card">
     <p>
@@ -69,10 +71,19 @@ const detectLanguage = () => {
       }}</span>
     </p>
     <p>
-      <span class="output-label">Closest Levinstein Distance:</span>
-      <span class="output-result" v-if="searchTerm.length > 1">{{
-        searchClosestLevinsteinDistance(searchTerm, indexedVocabluaryResolved)
-      }}</span>
+      <span class="output-label">Closest Levinstein Distance:<br /></span>
+      <span
+        class="output-result"
+        v-if="searchTerm.length > 1"
+        v-for="(item, idx) in searchClosestLevinsteinDistance(
+          searchTerm,
+          indexedVocabluaryResolved
+        )"
+        >{{
+          idx + ") Word: " + item.original + " - " + item.distance ??
+          item.distance
+        }}<br
+      /></span>
     </p>
   </div>
 
@@ -106,6 +117,9 @@ input {
 }
 .output-result {
   font-weight: normal;
+  font-size: large;
+  font-weight: bold;
+  color: #08b62e;
 }
 
 button {

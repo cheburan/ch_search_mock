@@ -4,7 +4,7 @@ import { levenshteinEditDistance } from "levenshtein-edit-distance";
 import { soundex } from "soundex-code";
 
 import { pinyin } from "pinyin-pro";
-import { franc } from 'franc';
+import { franc } from "franc";
 //const { pinyin } = pinyinPro;
 
 type IndexedVocabluary = {
@@ -19,7 +19,21 @@ type IndexedVocabluary = {
 };
 
 export function langaugeDetection(str: string) {
-  return franc(str, { minLength: 1, only: ['cmn', 'eng', 'jpn', 'kor', 'may', 'vie', 'rus', 'zlm', 'npi', 'tam']});
+  return franc(str, {
+    minLength: 1,
+    only: [
+      "cmn",
+      "eng",
+      "jpn",
+      "kor",
+      "may",
+      "vie",
+      "rus",
+      "zlm",
+      "npi",
+      "tam",
+    ],
+  });
 }
 
 export function getSimilarity(a: string, b: string) {
@@ -41,9 +55,11 @@ export function getSoundex(str: string) {
 export function searchClosestLevinsteinDistance(
   str: string,
   vocabluary: IndexedVocabluary[]
-): IndexedVocabluary {
-  let closest = {} as IndexedVocabluary;
-  let closestDistance = 0;
+): IndexedVocabluary[] {
+  let closest = [{}] as IndexedVocabluary[];
+  let firstclosestDistance = 0;
+  let secondClosest = 0;
+  let thirdClosest = 0;
   const strMetaphone = getMetaphone(str);
   vocabluary.forEach((item) => {
     const distance = getSimilarity(strMetaphone, item.metaphone);
@@ -51,10 +67,16 @@ export function searchClosestLevinsteinDistance(
       `Distance between ${str}(${strMetaphone}) and ${item.original}(${item.metaphone}) is - `,
       distance
     );
-    if (distance > closestDistance) {
-      closestDistance = distance;
+    if (distance > firstclosestDistance) {
+      firstclosestDistance = distance;
       item.distance = distance;
-      closest = item;
+      closest[0] = item;
+    } else if (distance > secondClosest) {
+      secondClosest = distance;
+      closest[1] = item;
+    } else if (distance > thirdClosest){
+      thirdClosest = distance;
+      closest[2] = item;
     }
   });
   return closest;
@@ -112,7 +134,6 @@ export let indexedVocabluary = vocabluary.map(async (item) => {
 });
 
 export const indexedVocabluaryResolved = await Promise.all(indexedVocabluary);
-
 
 // console.log("Original string: ", FOOD);
 // console.log("Pinyin: ", getPinyin(FOOD));
