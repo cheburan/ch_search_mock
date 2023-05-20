@@ -70,11 +70,14 @@ export function searchClosestLevinsteinDistance(
     if (distance > firstclosestDistance) {
       firstclosestDistance = distance;
       item.distance = distance;
+      closest[2] = closest[1];
+      closest[1] = closest[0] 
       closest[0] = item;
     } else if (distance > secondClosest) {
       secondClosest = distance;
+      closest[2] = closest[1];
       closest[1] = item;
-    } else if (distance > thirdClosest){
+    } else if (distance > thirdClosest) {
       thirdClosest = distance;
       closest[2] = item;
     }
@@ -117,6 +120,36 @@ export const vocabluary = [
   ["热狗", "rè gǒu", "Hot dog"],
   ["羊肉", "yáng ròu", "Mutton"],
   ["兔子肉", "tù zǐ ròu", "Rabbit meat"],
+  ["苹果", "píng guǒ", "Apple"],
+  ["香蕉", "xiāng jiāo", "Banana"],
+  ["芒果", "máng guǒ", "Mango"],
+  ["葡萄", "pú táo", "Grape"],
+  ["橙子", "chéng zǐ", "Orange"],
+  ["草莓", "cǎo méi", "Strawberry"],
+  ["西瓜", "xī guā", "Melon"],
+  ["樱桃", "yīng táo", "Cherry"],
+  ["柑橘", "gān jú", "Mandarin"],
+  ["桃子", "táo zǐ", "Peach"],
+  ["梨", "lí", "Pear"],
+  ["蓝莓", "lán méi", "Blueberry"],
+  ["椰子", "yē zǐ", "Coconut"],
+  ["奇异果", "qí yì guǒ", "Kiwi"],
+  ["柠檬", "níng méng", "Lemon"],
+  ["牛油果", "niú yóu guǒ", "Avocado"],
+  ["菠萝", "bō luó", "Pineapple"],
+  ["石榴", "shí liú", "Pomegranate"],
+  ["茶", "chá", "Tea"],
+  ["牛奶", "niú nǎi", "Milk"],
+  ["奶茶", "nǎi chá", "Milky tea"],
+  ["咖啡", "kā fēi", "Coffee"],
+  ["汽水", "qì shuǐ", "Pop"],
+  ["可口可乐", "kě kǒu kě lè", "Cocoa"],
+  ["雪碧", "xuě bì", "Sprite"],
+  ["果汁", "guǒ zhī", "Fruit juice"],
+  ["柠檬水", "níng méng shuǐ", "Lemonade"],
+  ["啤酒", "pí jiǔ", "Beer"],
+  ["白酒", "bái jiǔ", "White spirits"],
+  ["红酒", "hóng jiǔ", "Red wine"],
 ];
 
 console.log("Starting...");

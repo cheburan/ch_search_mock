@@ -41,37 +41,37 @@ const detectLanguage = () => {
   </div>
   <div class="card">
     <p>
-      <span class="output-label">search term:</span>
+      <span class="output-label">search term: </span>
       <span class="output-result" v-if="searchTerm.length > 1">{{
         searchTerm
       }}</span>
     </p>
     <p>
-      <span class="output-label">search term Pinyin:</span>
+      <span class="output-label">search term Pinyin: </span>
       <span class="output-result" v-if="searchTerm.length > 1">{{
         getPinyin(searchTerm)
       }}</span>
     </p>
     <p>
-      <span class="output-label">search term Metaphone:</span>
+      <span class="output-label">search term Metaphone: </span>
       <span class="output-result" v-if="searchTerm.length > 1">{{
         getMetaphone(searchTerm)
       }}</span>
     </p>
     <p>
-      <span class="output-label">search term Similarity with itself:</span>
+      <span class="output-label">search term Similarity with itself: </span>
       <span class="output-result" v-if="searchTerm.length > 1">{{
         getSimilarity(searchTerm, searchTerm)
       }}</span>
     </p>
     <p>
-      <span class="output-label">search term Soundex:</span>
+      <span class="output-label">search term Soundex: </span>
       <span class="output-result" v-if="searchTerm.length > 1">{{
         getSoundex(searchTerm)
       }}</span>
     </p>
     <p>
-      <span class="output-label">Closest Levinstein Distance:<br /></span>
+      <span class="output-label">Closest Levinstein Distance: <br /></span>
       <span
         class="output-result"
         v-if="searchTerm.length > 1"
@@ -80,7 +80,7 @@ const detectLanguage = () => {
           indexedVocabluaryResolved
         )"
         >{{
-          idx + ") Word: " + item.original + " - " + item.distance ??
+          idx+1 + ") Word: " + item.original + " - Distance: " + item.distance ??
           item.distance
         }}<br
       /></span>
