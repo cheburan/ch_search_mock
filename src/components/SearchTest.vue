@@ -21,6 +21,11 @@ const detectLanguage = () => {
   detectedLanguage.value = langaugeDetection(searchTerm.value);
   console.log("detected Language: ", detectedLanguage.value);
 };
+
+const toFixedNumber = (num: number | undefined) => {
+  if (!num) return 0;
+  return num.toFixed(2);
+};
 </script>
 
 <template>
@@ -80,8 +85,7 @@ const detectLanguage = () => {
           indexedVocabluaryResolved
         )"
         >{{
-          idx+1 + ") Word: " + item.original + " - Distance: " + item.distance ??
-          item.distance
+          idx+1 + ") Word: " + item.original + " Pinyin: " + item.pinyin + " - Distance: " + toFixedNumber(item.distance)
         }}<br
       /></span>
     </p>

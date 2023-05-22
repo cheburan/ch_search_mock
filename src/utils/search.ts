@@ -73,11 +73,11 @@ export function searchClosestLevinsteinDistance(
       closest[2] = closest[1];
       closest[1] = closest[0] 
       closest[0] = item;
-    } else if (distance > secondClosest) {
+    } else if (distance > secondClosest && distance <= firstclosestDistance) {
       secondClosest = distance;
       closest[2] = closest[1];
       closest[1] = item;
-    } else if (distance > thirdClosest) {
+    } else if (distance > thirdClosest && distance <= secondClosest) {
       thirdClosest = distance;
       closest[2] = item;
     }
