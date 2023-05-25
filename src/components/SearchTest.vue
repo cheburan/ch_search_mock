@@ -79,7 +79,7 @@ const toFixedNumber = (num: number | undefined) => {
       <span class="output-label">Closest Levinstein Distance: <br /></span>
       <span
         class="output-result"
-        v-if="searchTerm.length > 1"
+        v-if="searchTerm.length > 0"
         v-for="(item, idx) in searchClosestLevinsteinDistance(
           searchTerm,
           indexedVocabluaryResolved
