@@ -103,7 +103,7 @@ const toFixedNumber = (num: number | undefined) => {
 </template>
 
 <style scoped>
-.card {
+``.card {
   padding: 1em;
 }
 
